@@ -1,0 +1,41 @@
+%%%%%%%%%%%%%%%2019年度Annual Report用スタイルファイル%%%%%%%%%%%%%%%%%%%%%%%%%
+%このFormatはpLaTeXまたはupLaTeXで処理できます．
+%以下に報告書の基本形が示してありますので、参考にしてお書き下さい。
+%数字は２桁以上は全て半角で書いて下さい。
+%全角空白は問題を起こす可能性がありますので使わないでください。
+%数式はかならずmath modeでお願いいたします。
+%事務局では校正をせずにprint outしたものをそのまま印刷に回しますので、
+%一度コンパイルして、スペルチェック、校正は必ず行なって下さい。
+%まとめの編集の都合上、\newcommand, \renewcommand, \def の追加等はさけて下さいま
+%すようお願い致します。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[twocolumn,autodetect-engine,dvipdfmx]{jsarticle}
+\usepackage[paper=a4paper,textheight=25cm,textwidth=15cm,top=2.5cm]{geometry}
+\setlength{\parindent}{0pt}
+\sloppy
+\usepackage{amssymb,amsmath,graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\normalsize}{}{0pt}{}
+\titlespacing{\section}{0cm}{0.2cm}{0.1cm}
+
+\usepackage{xparse}
+\NewDocumentCommand{\msname}{s m m o m}{
+  \IfBooleanTF{#1}{% 英語
+    \IfNoValueTF{#4}
+      {{\bfseries\gtfamily #2}\index{#2}\index{#3@#5}}
+      {{\bfseries\gtfamily #2 (#4)}\index{#2 (#4)}\index{#5@#2}}
+  }
+  {{\bfseries\gtfamily #3 (#2)}\index{#2 (#3)}\index{#5@#3}}
+}
+
+\newcommand*{\newaddress}{}
+\newcommand*{\position}{}
+\newcommand*{\mscourse}[1]{\par\hspace*{4cm}#1\par}
+
+\begin{document}
+\input{secret/address}
+\input{annual2019}
+\end{document}
